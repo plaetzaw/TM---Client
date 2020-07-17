@@ -11,9 +11,13 @@ const initialState = {};
 const middleware = [thunk];
 
 //Combine Reducers Here
+// const reducers = combineReducers({
+//   users: userReducers,
+//   data: dataReducers,
+// });
 const reducers = combineReducers({
-  //   Users: userReducers,
-  Data: dataReducers,
+  users: userReducers,
+  data: dataReducers,
 });
 
 const store = createStore(

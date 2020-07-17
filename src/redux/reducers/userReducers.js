@@ -1,32 +1,28 @@
 import { LOGGED_IN, LOGGED_OUT, SIGNED_UP } from "../actions/actionTypes";
 
-const initialState = (state, action) => {
-  if (state === undefined) {
-    state = {
-      loading: false,
-    };
-  }
+const initialState = {
+  loggedIn: false,
+  signedUp: false,
 };
 
-const userReducers = (state = initialState, action) => {
-  if (action.type === LOGGED_IN) {
-    return {
-      ...state,
-      loggedIn: true,
-    };
+export default function (state = initialState, action) {
+  switch (action.type) {
+    case LOGGED_IN:
+      return {
+        ...state,
+        loggedIn: true,
+      };
+    case LOGGED_OUT:
+      return {
+        ...state,
+        loggedIn: false,
+      };
+    case SIGNED_UP:
+      return {
+        ...state,
+        signedUp: true,
+      };
+    default:
+      return state;
   }
-  if (action.type === LOGGED_OUT) {
-    return {
-      ...state,
-      loggedIn: false,
-    };
-  }
-  if (action.type === SIGNED_UP) {
-    return {
-      ...state,
-      signedUp: true,
-    };
-  }
-};
-
-export default userReducers;
+}
