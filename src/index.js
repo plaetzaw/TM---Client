@@ -7,12 +7,13 @@ import Login from "./components/login";
 import Register from "./components/registration";
 import Create from "./components/createTask";
 import Feed from "./components/taskFeed";
+
 //===Routing===
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 ///===Redux===
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+// import { createStore } from "redux";
 
 // ===Store===
 import store from "./redux/store";
