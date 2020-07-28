@@ -1,34 +1,102 @@
 import React, { Component } from "react";
 import { Form, Input, Button, Checkbox } from "antd";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import FormItem from "antd/lib/form/FormItem";
+import { RegisterUser } from "../redux/actions/actions";
 
-export class registration extends Component {
+export class Registration extends Component {
+  constructor() {
+    super();
+    this.state = {
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: "",
+    };
+  }
+  onSubmit = (e) => {
+    e.preventDefault();
+    console.log("Beginning registration");
+    const newUserData = {
+      firstname: this.state.firstname,
+      lastname: this.state.lastname,
+      email: this.state.email,
+      password: this.state.password,
+    };
+    console.log(this.state.firstname);
+    console.log(this.state.lastname);
+    console.log(this.state.email);
+    console.log(this.state.password);
+    this.props.RegisterUser(newUserData, this.props.history);
+    console.log("User Registered");
+  };
+
+  onChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+    console.log(e.target.value);
+  };
+
   render() {
     return (
       <div>
         {" "}
         <Form>
-          <FormItem label="firstname" name="firstname">
+          <FormItem
+            label="firstname"
+            name="firstname"
+            onChange={(e) => this.onChange(e)}
+          >
             <Input />
           </FormItem>
 
-          <FormItem label="lastname" name="lastname">
+          <FormItem
+            label="lastname"
+            name="lastname"
+            onChange={(e) => this.onChange(e)}
+          >
             <Input />
           </FormItem>
 
-          <FormItem label="email" name="email">
+          <FormItem
+            label="email"
+            name="email"
+            onChange={(e) => this.onChange(e)}
+          >
             <Input />
           </FormItem>
 
-          <FormItem label="password" name="password">
+          <FormItem
+            label="password"
+            name="password"
+            type="password"
+            onChange={(e) => this.onChange(e)}
+          >
             <Input />
           </FormItem>
 
-          <Button>Submit</Button>
+          <Button type="primary" label="Submit" onClick={this.onSubmit} />
         </Form>
       </div>
     );
   }
 }
 
-export default registration;
+Registration.propTypes = {
+  RegisterUser: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    data: state.data,
+  };
+};
+
+const mapDispatchToProps = {
+  RegisterUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);

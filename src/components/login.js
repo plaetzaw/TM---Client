@@ -1,73 +1,68 @@
 import React, { Component } from "react";
 import { Form, Input, Button, Checkbox } from "antd";
 import FormItem from "antd/lib/form/FormItem";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { LoginUser } from "../redux/actions/actions";
 
 export class Login extends Component {
+  constructor() {
+    super();
+    this.state = {
+      email: "",
+      password: "",
+    };
+  }
+  onSubmit = (e) => {
+    e.preventDefault();
+    console.log("Beginning login");
+    const userData = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+    this.props.LoginUser(userData, this.props.history);
+  };
+
+  onChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
   render() {
-    // const layout = {
-    //   labelCol: { span: 8 },
-    //   wrapperCol: { span: 16 },
-    // };
-
-    // const tailLayout = {
-    //   wrapperCol: { offset: 8, span: 16 },
-    // };
-
-    // const onFinish = (values) => {
-    //   console.log("Success:", values);
-    // };
-
-    // const onFinishFailed = (errorInfo) => {
-    //   console.log("Failed:", errorInfo);
-    // };
-
     return (
       <Form>
-        <FormItem label="username" name="username">
+        <FormItem label="email" name="email" onChange={this.onChange}>
           <Input />
         </FormItem>
 
-        <FormItem label="password" name="password">
+        <FormItem
+          label="password"
+          name="password"
+          type="password"
+          onChange={this.onChange}
+        >
           <Input />
         </FormItem>
 
-        <Button>Submit</Button>
+        <Button type="secondary" label="Login" onClick={this.onSubmit} />
       </Form>
-      // <Form
-      //   {...layout}
-      //   name="basic"
-      //   initialValues={{ remember: true }}
-      //   onFinish={onFinish}
-      //   onFinishFailed={onFinishFailed}
-      // >
-      //   <Form.Item
-      //     label="Username"
-      //     name="username"
-      //     rules={[{ required: true, message: "Please input your username!" }]}
-      //   >
-      //     <Input />
-      //   </Form.Item>
-
-      //   <Form.Item
-      //     label="Password"
-      //     name="password"
-      //     rules={[{ required: true, message: "Please input your password!" }]}
-      //   >
-      //     <Input.Password />
-      //   </Form.Item>
-
-      //   <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-      //     <Checkbox>Remember me</Checkbox>
-      //   </Form.Item>
-
-      //   <Form.Item {...tailLayout}>
-      //     <Button type="primary" htmlType="submit">
-      //       Submit
-      //     </Button>
-      //   </Form.Item>
-      // </Form>
     );
   }
 }
 
-export default Login;
+Login.propTypes = {
+  LoginUser: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    data: state.data,
+  };
+};
+
+const mapDispatchToProps = {
+  LoginUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
