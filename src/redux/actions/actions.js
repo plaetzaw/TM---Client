@@ -81,12 +81,12 @@ export const getAllTasks = () => (dispatch) => {
 };
 
 //Create Task
-export const newTask = () => (dispatch) => {
+export const newTask = (newTask) => (dispatch) => {
   console.log("Creating new task");
   axios
-    .post("http://localhost:8080/createTask")
+    .post("http://localhost:8080/createTask", newTask)
     .then((newTask) => {
-      console.log("Created new task");
+      console.log(newTask);
       dispatch({ type: POST_TASK, payload: newTask.data });
     })
     .catch((err) => console.log(err));

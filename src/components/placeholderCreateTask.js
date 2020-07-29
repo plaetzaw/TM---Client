@@ -1,11 +1,9 @@
 import React, { Component } from "react";
+import { Form, Input, Button } from "antd";
+import FormItem from "antd/lib/form/FormItem";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { newTask, getAllUsers } from "../redux/actions/actions";
-import { InputText } from "primereact/inputtext";
-import { Button } from "primereact/button";
-
-import "primeflex/primeflex.css";
 
 //Add a GetAllUsers route on the back end, those users can then be used in the state to
 //select from a dropdown so the user can assign tasks
@@ -43,46 +41,61 @@ export class createTask extends Component {
       assignedto: parseInt(this.state.assignedto),
       assignedby: parseInt(this.state.assignedby),
     };
-    this.props.newTask(newTask);
+    this.props.newTask(newTask, this.props.history);
     console.log("New task posted");
   };
 
   render() {
     return (
-      <div className="p-field">
-        <InputText
-          name="taskname"
-          placeholder="Task Title"
-          onChange={(e) => this.handleChange(e)}
-        />
-        {this.state.taskname}
-        <br />
-        <InputText
-          name="taskdescription"
-          placeholder="Task Description"
-          onChange={(e) => this.handleChange(e)}
-        />
-        <br />
-        {this.state.taskdescription}
-        <InputText
-          name="assignedto"
-          placeholder="Assigned To"
-          onChange={(e) => this.handleChange(e)}
-        />
-        {this.state.assignedto}
-        <br />
-        <InputText
-          name="assignedby"
-          placeholder="Assigned By"
-          onChange={(e) => this.handleChange(e)}
-        />
-        {this.state.assignedby}
-        <br />
-        <Button
-          label="Proceed"
-          className="p-button-raised p-button-rounded"
-          onClick={this.onSubmit}
-        />
+      <div>
+        <Form>
+          <FormItem
+            label="Task Title"
+            name="taskname"
+            onChange={(e) => this.handleChange(e)}
+          >
+            <Input />
+          </FormItem>
+
+          {this.state.taskname}
+
+          <FormItem
+            label="Description"
+            name="taskdescription"
+            onChange={(e) => this.handleChange(e)}
+          >
+            <Input />
+          </FormItem>
+
+          {/* <FormItem
+            label="Completed?"
+            name="taskcompleted"
+            placeholder="tobereplacedwithcheckbox"
+            onChange={(e) => this.handleChange(e)}
+          >
+            <Input />
+          </FormItem> */}
+
+          <FormItem
+            label="assignedto"
+            name="assignedto"
+            placeholder="tobereplacedwithdropdown"
+            onChange={(e) => this.handleChange(e)}
+          >
+            <Input />
+          </FormItem>
+
+          <FormItem
+            label="assignedby"
+            name="assignedby"
+            placeholder="tobereplacedwithdropdown"
+            onChange={(e) => this.handleChange(e)}
+          >
+            <Input />
+          </FormItem>
+
+          <Button type="primary" label="Login" onClick={this.onSubmit} />
+        </Form>
       </div>
     );
   }
