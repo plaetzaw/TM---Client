@@ -8,6 +8,9 @@ import Register from "./components/registration";
 import Create from "./components/createTask";
 import Feed from "./components/taskFeed";
 
+//===Layout===
+import UI from "./components/Layout/UI";
+
 //===Routing===
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -21,6 +24,7 @@ import store from "./redux/store";
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
+      <UI />
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/register" component={Register} />

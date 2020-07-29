@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import "primeflex/primeflex.css";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { LoginUser } from "../redux/actions/actions";
+import "primeicons/primeicons.css";
+import "primereact/resources/themes/nova-light/theme.css";
+import "primereact/resources/primereact.css";
+import "primeflex/primeflex.css";
 
 export class Login extends Component {
   constructor() {

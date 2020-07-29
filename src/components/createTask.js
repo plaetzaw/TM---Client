@@ -4,11 +4,10 @@ import { connect } from "react-redux";
 import { newTask, getAllUsers } from "../redux/actions/actions";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-
+import "primeicons/primeicons.css";
+import "primereact/resources/themes/nova-light/theme.css";
+import "primereact/resources/primereact.css";
 import "primeflex/primeflex.css";
-
-//Add a GetAllUsers route on the back end, those users can then be used in the state to
-//select from a dropdown so the user can assign tasks
 
 export class createTask extends Component {
   constructor() {
