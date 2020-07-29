@@ -36,7 +36,7 @@ export class Registration extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
 
   render() {
@@ -46,33 +46,29 @@ export class Registration extends Component {
         <Form>
           <FormItem
             label="firstname"
-            name="firstname"
-            onChange={(e) => this.onChange(e)}
+            className="firstname"
+            onChange={this.onChange}
           >
             <Input />
           </FormItem>
 
           <FormItem
             label="lastname"
-            name="lastname"
-            onChange={(e) => this.onChange(e)}
+            className="lastname"
+            onChange={this.onChange}
           >
             <Input />
           </FormItem>
 
-          <FormItem
-            label="email"
-            name="email"
-            onChange={(e) => this.onChange(e)}
-          >
+          <FormItem label="email" className="email" onChange={this.onChange}>
             <Input />
           </FormItem>
 
           <FormItem
             label="password"
-            name="password"
+            className="password"
             type="password"
-            onChange={(e) => this.onChange(e)}
+            onChange={this.onChange}
           >
             <Input />
           </FormItem>

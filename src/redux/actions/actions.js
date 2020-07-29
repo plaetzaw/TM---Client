@@ -5,6 +5,7 @@ import {
   LOADING_DATA,
   GET_USER_TASKS,
   GET_ALL_TASKS,
+  POST_TASK,
 } from "./actionTypes";
 import axios from "axios";
 
@@ -74,6 +75,18 @@ export const getAllTasks = () => (dispatch) => {
         type: GET_ALL_TASKS,
         payload: allTasks.data,
       });
+    })
+    .catch((err) => console.log(err));
+};
+
+//Create Task
+export const newTask = () => (dispatch) => {
+  console.log("Creating new task");
+  axios
+    .post("http://localhost:8080/createTask")
+    .then((newTask) => {
+      console.log("Created new task");
+      dispatch({ type: POST_TASK, payload: newTask.data });
     })
     .catch((err) => console.log(err));
 };
