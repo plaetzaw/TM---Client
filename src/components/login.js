@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Form, Input, Button, Checkbox } from "antd";
-import FormItem from "antd/lib/form/FormItem";
+import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
+import "primeflex/primeflex.css";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { LoginUser } from "../redux/actions/actions";
@@ -23,29 +24,34 @@ export class Login extends Component {
     this.props.LoginUser(userData, this.props.history);
   };
 
-  onChange = (e) => {
+  handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
+
   render() {
     return (
-      <Form>
-        <FormItem label="email" name="email" onChange={this.onChange}>
-          <Input />
-        </FormItem>
-
-        <FormItem
-          label="password"
+      <div className="p-field">
+        <InputText
+          name="email"
+          placeholder="Email address"
+          onChange={(e) => this.handleChange(e)}
+        />
+        <br />
+        <InputText
           name="password"
+          placeholder="Password"
           type="password"
-          onChange={this.onChange}
-        >
-          <Input />
-        </FormItem>
-
-        <Button type="secondary" label="Login" onClick={this.onSubmit} />
-      </Form>
+          onChange={(e) => this.handleChange(e)}
+        />
+        <br />
+        <Button
+          label="Submit"
+          className="p-button-raised p-button-rounded"
+          onClick={this.onSubmit}
+        />
+      </div>
     );
   }
 }

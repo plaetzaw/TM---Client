@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Form, Input, Button, Checkbox } from "antd";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import FormItem from "antd/lib/form/FormItem";
 import { RegisterUser } from "../redux/actions/actions";
+import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
+import "primeflex/primeflex.css";
 
 export class Registration extends Component {
   constructor() {
@@ -32,7 +33,7 @@ export class Registration extends Component {
     console.log("User Registered");
   };
 
-  onChange = (e) => {
+  handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
@@ -41,40 +42,37 @@ export class Registration extends Component {
 
   render() {
     return (
-      <div>
-        {" "}
-        <Form>
-          <FormItem
-            label="firstname"
-            className="firstname"
-            onChange={this.onChange}
-          >
-            <Input />
-          </FormItem>
-
-          <FormItem
-            label="lastname"
-            className="lastname"
-            onChange={this.onChange}
-          >
-            <Input />
-          </FormItem>
-
-          <FormItem label="email" className="email" onChange={this.onChange}>
-            <Input />
-          </FormItem>
-
-          <FormItem
-            label="password"
-            className="password"
-            type="password"
-            onChange={this.onChange}
-          >
-            <Input />
-          </FormItem>
-
-          <Button type="primary" label="Submit" onClick={this.onSubmit} />
-        </Form>
+      <div className="p-field">
+        <InputText
+          name="firstname"
+          placeholder="First Name"
+          onChange={(e) => this.handleChange(e)}
+        />
+        <br />
+        <InputText
+          name="lastname"
+          placeholder="Last Name"
+          onChange={(e) => this.handleChange(e)}
+        />
+        <br />
+        <InputText
+          name="email"
+          placeholder="Email Address"
+          onChange={(e) => this.handleChange(e)}
+        />
+        <br />
+        <InputText
+          name="password"
+          placeholder="Password"
+          type="password"
+          onChange={(e) => this.handleChange(e)}
+        />
+        <br />
+        <Button
+          label="Submit"
+          className="p-button-raised p-button-rounded"
+          onClick={this.onSubmit}
+        />
       </div>
     );
   }

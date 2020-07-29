@@ -79,7 +79,7 @@ export class createTask extends Component {
         {this.state.assignedby}
         <br />
         <Button
-          label="Proceed"
+          label="Submit!"
           className="p-button-raised p-button-rounded"
           onClick={this.onSubmit}
         />
