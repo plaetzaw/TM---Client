@@ -3,6 +3,7 @@ export const LOGGED_OUT = "LOGGED_OUT";
 export const SIGNED_UP = "SIGNED_UP";
 export const GET_ALL_TASKS = "GET_ALL_TASKS";
 export const GET_USER_TASKS = "GET_USER_TASKS";
+export const GET_ALL_USERS = "GET_ALL_USERS";
 export const POST_TASK = "POST_TASK";
 export const DELETE_TASK = "DELETE_TASK";
 export const UPDATE_TASK = "UPDATE_TASK";

@@ -4,12 +4,14 @@ import {
   POST_TASK,
   DELETE_TASK,
   UPDATE_TASK,
+  GET_ALL_USERS,
 } from "../actions/actionTypes";
 
 const initialState = {
   loadingData: true,
   tasks: [],
   uploads: [],
+  users: [],
 };
 
 const dataReducers = (state = initialState, action) => {
@@ -30,6 +32,11 @@ const dataReducers = (state = initialState, action) => {
       return {
         ...state,
         uploads: action.payload,
+      };
+    case GET_ALL_USERS:
+      return {
+        ...state,
+        users: action.payload,
       };
     default:
       return state;

@@ -3,12 +3,15 @@ import { Form, Input, Button } from "antd";
 import FormItem from "antd/lib/form/FormItem";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { newTask } from "../redux/actions/actions";
+import { newTask, getAllUsers } from "../redux/actions/actions";
 
 //Add a GetAllUsers route on the back end, those users can then be used in the state to
 //select from a dropdown so the user can assign tasks
 
 export class createTask extends Component {
+  componentDidMount() {
+    this.props.getAllUsers();
+  }
   constructor() {
     super();
     this.state = {
@@ -90,6 +93,7 @@ export class createTask extends Component {
 
 createTask.propTypes = {
   newTask: PropTypes.func.isRequired,
+  getAllUsers: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
 };
 
@@ -101,6 +105,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   newTask,
+  getAllUsers,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(createTask);

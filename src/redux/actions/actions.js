@@ -6,6 +6,7 @@ import {
   GET_USER_TASKS,
   GET_ALL_TASKS,
   POST_TASK,
+  GET_ALL_USERS,
 } from "./actionTypes";
 import axios from "axios";
 
@@ -87,6 +88,19 @@ export const newTask = () => (dispatch) => {
     .then((newTask) => {
       console.log("Created new task");
       dispatch({ type: POST_TASK, payload: newTask.data });
+    })
+    .catch((err) => console.log(err));
+};
+
+//Get All Users
+export const getAllUsers = () => (dispatch) => {
+  console.log("Gathering users");
+  axios
+    .post("http://localhost:8080/allUsers")
+    .then((allUsers) => {
+      console.log("Gathered users");
+      dispatch({ type: GET_ALL_USERS, payload: allUsers.data });
+      console.log(allUsers.data);
     })
     .catch((err) => console.log(err));
 };
