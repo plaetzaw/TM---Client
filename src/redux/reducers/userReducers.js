@@ -3,6 +3,8 @@ import {
   SET_UNAUTHENTICATED,
   SET_AUTHENTICATED,
   SIGNED_UP,
+  LOADING_USER,
+  GET_USER_TASKS,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -10,6 +12,7 @@ const initialState = {
   loggedIn: false,
   authenticated: false,
   credentials: {},
+  usertasks: {},
 };
 
 export default function (state = initialState, action) {
@@ -30,6 +33,16 @@ export default function (state = initialState, action) {
       return {
         ...state,
         signedUp: true,
+      };
+    case LOADING_USER:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_USER_TASKS:
+      return {
+        ...state,
+        usertasks: action.payload,
       };
     default:
       return state;
