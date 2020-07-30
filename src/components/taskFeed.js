@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getAllTasks, getAllUsers } from "../redux/actions/actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import TaskCard from "./taskCard";
 
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/nova-light/theme.css";
@@ -15,13 +16,18 @@ export class taskFeed extends Component {
   }
 
   render() {
-    const background = {
-      backgroundColor: "green",
-    };
+    const { data } = this.props;
+    // const background = {
+    //   backgroundColor: "green",
+    // };
 
-    const useStyles = {};
+    // const useStyles = {};
+    const taskInfo = data.tasks;
 
-    return <div></div>;
+    let taskMarkup = taskInfo.map((card) => (
+      <TaskCard key={card.id} data={card} />
+    ));
+    return <div className="p-grid">{taskMarkup}</div>;
   }
 }
 
