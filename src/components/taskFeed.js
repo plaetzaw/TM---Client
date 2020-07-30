@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { getAllTasks } from "../redux/actions/actions";
+import { getAllTasks, getAllUsers } from "../redux/actions/actions";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/nova-light/theme.css";
@@ -17,6 +18,7 @@ export class taskFeed extends Component {
 
   componentDidMount() {
     this.props.getAllTasks();
+    this.props.getAllUsers();
   }
 
   render() {
@@ -30,14 +32,18 @@ export class taskFeed extends Component {
   }
 }
 
+taskFeed.propTypes = {
+  getAllTasks: PropTypes.func.isRequired,
+  getAllUsers: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
+};
+
 const mapStateToProps = (state) => ({
   data: state.data,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getAllTasks: () => {
-    dispatch(getAllTasks());
-  },
-});
-
+const mapDispatchToProps = {
+  getAllTasks,
+  getAllUsers,
+};
 export default connect(mapStateToProps, mapDispatchToProps)(taskFeed);

@@ -1,27 +1,30 @@
 import {
   LOGGED_IN,
+  SET_AUTHENTICATED,
+  SET_UNAUTHENTICATED,
   SIGNED_UP,
-  LOGGED_OUT,
   LOADING_DATA,
   GET_USER_TASKS,
   GET_ALL_TASKS,
   POST_TASK,
   GET_ALL_USERS,
 } from "./actionTypes";
+
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 //JWT Token Set
 export const setAuthorizationHeader = (token) => {
   const JWToken = `Bearer ${token}`;
   localStorage.setItem("JWToken", JWToken);
-  JWToken = axios.defaults.headers.common("Authorization");
+  axios.defaults.headers.common["Authorization"] = JWToken;
 };
 
 //Logout/RemoveJWT
 export const LogoutUser = () => (dispatch) => {
   localStorage.removeItem("JWToken");
   delete axios.defaults.headers.common("Authorization");
-  dispatch({ type: LOGGED_OUT });
+  dispatch({ type: SET_UNAUTHENTICATED });
 };
 
 //User Login
@@ -29,8 +32,10 @@ export const LoginUser = (userData) => (dispatch) => {
   console.log("Taken user data, pulling userdata from db");
   axios.post("http://localhost:8080/login", userData).then((results) => {
     setAuthorizationHeader(results.data.accessToken);
-    console.log("Triggering LOGGED_IN dispatch");
-    dispatch({ type: LOGGED_IN });
+    dispatch({ type: SET_AUTHENTICATED });
+    let decodedToken = jwtDecode(results.data.token);
+    console.log(decodedToken);
+    dispatch({ type: LOGGED_IN, payload: decodedToken });
   });
 };
 
