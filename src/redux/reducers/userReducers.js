@@ -28,6 +28,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loggedIn: true,
+        credentials: action.payload,
       };
     case SIGNED_UP:
       return {

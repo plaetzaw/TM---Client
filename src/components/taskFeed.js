@@ -9,13 +9,6 @@ import "primereact/resources/primereact.css";
 import "primeflex/primeflex.css";
 
 export class taskFeed extends Component {
-  constructor() {
-    super();
-    this.state = {
-      loading: false,
-    };
-  }
-
   componentDidMount() {
     this.props.getAllTasks();
     this.props.getAllUsers();
