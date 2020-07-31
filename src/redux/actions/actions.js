@@ -99,12 +99,13 @@ export const newTask = (newTask) => (dispatch) => {
 };
 
 //Delete Task
-export const deleteTask = (deletedTask) => (dispatch) => {
+export const deleteTask = (data) => (dispatch) => {
+  let taskID = { id: data.id };
   console.log("Deleting task");
   axios
-    .post("http://localhost:8080/deleteTask", deletedTask)
-    .then((deletedTask) => {
-      dispatch({ type: DELETE_TASK, payload: deletedTask.data });
+    .post("http://localhost:8080/deleteTask", taskID)
+    .then(() => {
+      dispatch({ type: DELETE_TASK });
     })
     .catch((err) => console.log(err));
 };
