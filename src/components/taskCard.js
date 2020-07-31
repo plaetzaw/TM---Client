@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
+import { deleteTask } from "../redux/actions/actions";
 
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/nova-light/theme.css";
@@ -8,6 +9,15 @@ import "primereact/resources/primereact.css";
 import "primeflex/primeflex.css";
 
 export class taskCard extends Component {
+  constructor() {
+    super();
+  }
+
+  handleDelete = (e) => {
+    e.preventDefault();
+    this.props.deleteTask();
+  };
+
   render() {
     const { data } = this.props;
 
@@ -16,10 +26,6 @@ export class taskCard extends Component {
     //     [e.target.name]: e.target.value,
     //   });
     //   console.log(this.state.taskname);
-    // };
-
-    // onDelete = (e) => {
-    //   e.preventDefault();
     // };
 
     const header = (
@@ -36,9 +42,10 @@ export class taskCard extends Component {
           style={{ marginRight: ".25em" }}
         />
         <Button
-          label="Cancel"
+          label="Delete"
           icon="pi pi-times"
           className="p-button-secondary"
+          onClick={this.handleDelete}
         />
       </span>
     );
@@ -46,7 +53,7 @@ export class taskCard extends Component {
     return (
       <div>
         <Card
-          id={data.id}
+          id={data.id.toString()}
           title={data.taskname}
           subTitle={data.taskdescription}
           style={{ width: "300px" }}
