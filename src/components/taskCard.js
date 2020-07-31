@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { deleteTask } from "../redux/actions/actions";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
-// import { deleteTask } from "../redux/actions/actions";
 
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/nova-light/theme.css";
@@ -11,7 +13,7 @@ import "primeflex/primeflex.css";
 export class taskCard extends Component {
   handleDelete = (e) => {
     e.preventDefault();
-    // this.props.deleteTask({ id: this.props.data.id });
+    this.props.deleteTask({ id: this.props.data.id });
   };
 
   render() {
@@ -62,5 +64,22 @@ export class taskCard extends Component {
     );
   }
 }
+
+// taskCard.propTypes = {
+//   deleteTask: PropTypes.func.isRequired,
+//   data: PropTypes.object.isRequired,
+// };
+
+// const mapStateToProps = (state) => {
+//   return {
+//     data: state.data,
+//   };
+// };
+
+// const mapDispatchToProps = {
+//   deleteTask,
+// };
+
+// export default connect(mapStateToProps, mapDispatchToProps)(taskCard);
 
 export default taskCard;

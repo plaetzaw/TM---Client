@@ -33,6 +33,10 @@ const dataReducers = (state = initialState, action) => {
         ...state,
         uploads: action.payload,
       };
+    case DELETE_TASK:
+      return {
+        ...state,
+      };
     case GET_ALL_USERS:
       return {
         ...state,
