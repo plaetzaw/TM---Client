@@ -4,6 +4,7 @@ import { Button } from "primereact/button";
 import PropTypes from "prop-types";
 import { LogoutUser } from "../../redux/actions/actions";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/nova-light/theme.css";
@@ -58,6 +59,14 @@ export class UI extends Component {
     return (
       <div>
         <Menubar model={this.items}>
+          <Link to="/createTask">Create Task</Link>
+
+          <Link to="/taskFeed">Task Feed</Link>
+
+          <Link to="/register">Register</Link>
+
+          <Link to="/">Login</Link>
+
           <Button
             label="Logout"
             icon="pi pi-power-off"

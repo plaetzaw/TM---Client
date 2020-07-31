@@ -11,10 +11,20 @@ export class taskCard extends Component {
   render() {
     const { data } = this.props;
 
+    // handleChange = (e) => {
+    //   this.setState({
+    //     [e.target.name]: e.target.value,
+    //   });
+    //   console.log(this.state.taskname);
+    // };
+
+    // onDelete = (e) => {
+    //   e.preventDefault();
+    // };
+
     const header = (
       <img
-        alt="Card"
-        src="showcase/demo/images/usercard.png"
+        alt="TaskCard"
         srcSet="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png"
       />
     );
@@ -36,15 +46,16 @@ export class taskCard extends Component {
     return (
       <div>
         <Card
+          id={data.id}
           title={data.taskname}
-          subTitle={data.taskcompleted}
+          subTitle={data.taskdescription}
           style={{ width: "300px" }}
           className="ui-card-shadow"
           footer={footer}
           header={header}
         >
           <div>
-            {data.taskdescription}
+            Task was last updated {data.updatedAt}
             <br />
             Assigned to Employee #{data.assignedto}
             <br />
