@@ -20,10 +20,13 @@ export class UI extends Component {
           {
             label: "Post New Task",
             icon: "pi pi-fw pi-plus",
+            url: "http://localhost:3000/createTask",
           },
           {
             label: "View Current Tasks",
             icon: "pi pi-fw pi-trash",
+            url: "http://localhost:3000/taskFeed",
+            //to be replaced with USER task feed
           },
           {
             separator: true,
@@ -31,12 +34,14 @@ export class UI extends Component {
         ],
       },
       {
-        label: "Users",
+        label: "User Profile",
         icon: "pi pi-fw pi-user",
+        //to be replaced with USER profile
       },
       {
         label: "All Team Tasks",
         icon: "pi pi-list",
+        url: "http://localhost:3000/taskFeed",
       },
     ];
   }
