@@ -23,7 +23,7 @@ export const setAuthorizationHeader = (token) => {
 //Logout/RemoveJWT
 export const LogoutUser = () => (dispatch) => {
   localStorage.removeItem("JWToken");
-  delete axios.defaults.headers.common("Authorization");
+  delete axios.defaults.headers.common["Authorization"];
   dispatch({ type: SET_UNAUTHENTICATED });
 };
 

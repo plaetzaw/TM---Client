@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Menubar } from "primereact/menubar";
 import { Button } from "primereact/button";
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { LogoutUser } from "../../redux/actions/actions";
+import { connect } from "react-redux";
 
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/nova-light/theme.css";
@@ -36,6 +38,7 @@ export class UI extends Component {
       {
         label: "User Profile",
         icon: "pi pi-fw pi-user",
+        url: "http://localhost:3000/",
         //to be replaced with USER profile
       },
       {
@@ -46,6 +49,11 @@ export class UI extends Component {
     ];
   }
 
+  onLogout = (e) => {
+    e.preventDefault();
+    this.props.LogoutUser();
+  };
+
   render() {
     return (
       <div>
@@ -54,6 +62,7 @@ export class UI extends Component {
             label="Logout"
             icon="pi pi-power-off"
             style={{ marginLeft: 4 }}
+            onClick={this.onLogout}
           />
         </Menubar>
         {this.props.children}
@@ -62,4 +71,17 @@ export class UI extends Component {
   }
 }
 
-export default UI;
+UI.propTypes = {
+  LogoutUser: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  data: state.data,
+});
+
+const mapDispatchToProps = {
+  LogoutUser,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UI);
