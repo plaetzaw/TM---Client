@@ -13,13 +13,14 @@ import "primeflex/primeflex.css";
 export class taskCard extends Component {
   handleDelete = (e) => {
     e.preventDefault();
-    this.props.deleteTask({ id: this.props.data.id });
+    this.props.deleteTask({ id: this.props.data.tasks.id });
   };
 
   render() {
-    const { data } = this.props;
+    const { tasks } = this.props.data;
 
-    console.log(data);
+    console.log(tasks);
+    console.log(this);
 
     const header = (
       <img
@@ -43,46 +44,68 @@ export class taskCard extends Component {
       </span>
     );
 
+    let cardMarkup = tasks.map((card) => (
+      <Card
+        // id={card.id}
+        id={card.id.toString()}
+        title={card.taskname}
+        subTitle={card.taskdescription}
+        style={{ width: "300px" }}
+        className="ui-card-shadow"
+        footer={footer}
+        header={header}
+      >
+        <div>
+          Task was last updated {card.updatedAt}
+          <br />
+          Assigned to Employee #{card.assignedto}
+          <br />
+          Assigned by Employee #{card.assignedby}
+        </div>
+      </Card>
+    ));
+
     return (
       <div>
-        <Card
-          id={data.id}
-          // id={data.id.toString()}
-          title={data.taskname}
-          subTitle={data.taskdescription}
+        {/* <Card
+          id={tasks.id}
+          // id={tasks.id.toString()}
+          title={tasks.taskname}
+          subTitle={tasks.taskdescription}
           style={{ width: "300px" }}
           className="ui-card-shadow"
           footer={footer}
           header={header}
         >
           <div>
-            Task was last updated {data.updatedAt}
+            Task was last updated {tasks.updatedAt}
             <br />
-            Assigned to Employee #{data.assignedto}
+            Assigned to Employee #{tasks.assignedto}
             <br />
-            Assigned by Employee #{data.assignedby}
+            Assigned by Employee #{tasks.assignedby}
           </div>
-        </Card>
+        </Card> */}
+        <h1>{cardMarkup}</h1>
       </div>
     );
   }
 }
 
-// taskCard.propTypes = {
-//   deleteTask: PropTypes.func.isRequired,
-//   data: PropTypes.object.isRequired,
-// };
+taskCard.propTypes = {
+  deleteTask: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
+};
 
-// const mapStateToProps = (state) => {
-//   return {
-//     data: state.data,
-//   };
-// };
+const mapStateToProps = (state) => {
+  return {
+    data: state.data,
+  };
+};
 
-// const mapDispatchToProps = {
-//   deleteTask,
-// };
+const mapDispatchToProps = {
+  deleteTask,
+};
 
-// export default connect(mapStateToProps, mapDispatchToProps)(taskCard);
+export default connect(mapStateToProps, mapDispatchToProps)(taskCard);
 
-export default taskCard;
+// export default taskCard;
