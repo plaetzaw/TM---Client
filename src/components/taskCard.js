@@ -19,6 +19,8 @@ export class taskCard extends Component {
   render() {
     const { data } = this.props;
 
+    console.log(data);
+
     const header = (
       <img
         alt="TaskCard"
@@ -44,7 +46,8 @@ export class taskCard extends Component {
     return (
       <div>
         <Card
-          id={data.id.toString()}
+          id={data.id}
+          // id={data.id.toString()}
           title={data.taskname}
           subTitle={data.taskdescription}
           style={{ width: "300px" }}
