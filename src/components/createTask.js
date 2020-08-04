@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { newTask, getAllUsers } from "../redux/actions/actions";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
+import { Dropdown } from "primereact/dropdown";
+
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/nova-light/theme.css";
 import "primereact/resources/primereact.css";
@@ -47,6 +49,15 @@ export class createTask extends Component {
   };
 
   render() {
+    const { users } = this.props.data;
+
+    let usersMarkup = users.map((users) => (
+      <div>
+        F : {users.firstname}
+        <br />L : {users.lastname}
+      </div>
+    ));
+
     return (
       <div className="p-field">
         <InputText
@@ -82,6 +93,18 @@ export class createTask extends Component {
           className="p-button-raised p-button-rounded"
           onClick={this.onSubmit}
         />
+        {usersMarkup}
+
+        {/* <Dropdown
+          key={users.id}
+          name={users.email}
+          options={users.map((user) => {
+            {
+              user.firstname;
+            }
+          })}
+          onChange={(e) => this.handleChange(e)}
+        /> */}
       </div>
     );
   }
