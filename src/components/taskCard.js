@@ -74,8 +74,6 @@ export class taskCard extends Component {
         <div>
           id# {card.id}
           <br />
-          {userMarkup}
-          <br />
           key value {card.id.toString()}
           <br />
           Task was last updated {card.updatedAt}
@@ -102,10 +100,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-// const mapDispatchToProps = {
-//   deleteTask,
-// };
+const mapDispatchToProps = {
+  deleteTask,
+};
 
-export default connect(mapStateToProps, { deleteTask })(taskCard);
-
-// export default taskCard;
+export default connect(mapStateToProps, mapDispatchToProps)(taskCard);

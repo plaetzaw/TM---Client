@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { newTask, getAllUsers } from "../redux/actions/actions";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import { Dropdown } from "primereact/dropdown";
 
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/nova-light/theme.css";
