@@ -100,10 +100,9 @@ export const newTask = (newTask) => (dispatch) => {
 
 //Delete Task
 export const deleteTask = (data) => (dispatch) => {
-  let taskID = { id: data.id };
   console.log("Deleting task");
   axios
-    .post("http://localhost:8080/deleteTask", taskID)
+    .post("http://localhost:8080/deleteTask", data)
     .then(() => {
       dispatch({ type: DELETE_TASK });
     })

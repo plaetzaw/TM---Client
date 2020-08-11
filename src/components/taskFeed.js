@@ -17,17 +17,16 @@ export class taskFeed extends Component {
 
   render() {
     const { data } = this.props;
-    // const background = {
-    //   backgroundColor: "green",
-    // };
-
-    // const useStyles = {};
     const taskInfo = data.tasks;
 
     let taskMarkup = taskInfo.map((card) => (
       <TaskCard key={card.id} data={card} />
     ));
-    return <div className="p-grid">{taskMarkup}</div>;
+    return (
+      <div className="p-grid">
+        <div className="col-6"> {taskMarkup}</div>
+      </div>
+    );
   }
 }
 

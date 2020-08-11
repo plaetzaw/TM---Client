@@ -57,7 +57,6 @@ export class taskCard extends Component {
             <div className="p-col-6">Task Assigned To {card.assignedto}</div>
             <div className="p-col-6">Task Assigned By {card.assignedby}</div>
           </div>
-          {/* <Button label="Save" icon="pi pi-check" /> */}
           <br />
           <Button
             label="Delete"
