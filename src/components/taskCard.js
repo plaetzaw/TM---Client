@@ -16,7 +16,6 @@ export class taskCard extends Component {
     let ibObj = {
       id: this.props.data.tasks.id,
     };
-    console.log(this.props);
     console.log(this.props.data);
     console.log(ibObj);
     this.props.deleteTask(ibObj);
@@ -25,62 +24,49 @@ export class taskCard extends Component {
   render() {
     const { tasks } = this.props.data;
 
-    // console.log(tasks);
-    // console.log(this);
-
-    const header = (
-      <img
-        alt="TaskCard"
-        srcSet="https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png"
-      />
-    );
-    const footer = (
-      <span>
-        <Button
-          label="Save"
-          icon="pi pi-check"
-          style={{ marginRight: ".25em" }}
-        />
-        <Button
-          label="Delete"
-          icon="pi pi-times"
-          className="p-button-secondary"
-          type="submit"
-          onClick={this.handleDelete}
-        />
-      </span>
-    );
-
-    let userMarkup = tasks.map((users) => (
-      <div>
-        {users.firstname}
-        <br />
-        {users.lastname}
-        <br />
-      </div>
-    ));
+    // let userMarkup = tasks.map((users) => (
+    //   <div>
+    //     {users.firstname}
+    //     <br />
+    //     {users.lastname}
+    //     <br />
+    //   </div>
+    // ));
 
     let cardMarkup = tasks.map((card) => (
       <Card
-        // id={card.id.toString()}
-        key={card.id.toString()}
+        key={card.id}
         title={card.taskname}
         subTitle={card.taskdescription}
-        style={{ width: "300px" }}
+        style={{
+          width: "300px",
+          display: "flex",
+          backgroundColor: "lightblue",
+          border: "3px",
+          margin: "10px",
+          alignItems: "center",
+        }}
         className="ui-card-shadow"
-        footer={footer}
-        header={header}
       >
         <div>
-          id# {card.id}
+          <div className="p-grid">
+            <div className="p-col-6">id# {card.id}</div>
+            <div className="p-col-6">key value {card.id.toString()}</div>
+          </div>
+          <div className="p-grid">
+            <div className="p-col-6">Task Assigned To {card.assignedto}</div>
+            <div className="p-col-6">Task Assigned By {card.assignedby}</div>
+          </div>
+          {/* <Button label="Save" icon="pi pi-check" /> */}
           <br />
-          key value {card.id.toString()}
-          <br />
-          Task was last updated {card.updatedAt}
-          <br />
-          Assigned to Employee #{card.assignedto}
-          <br />
-          Assigned by Employee #{card.assignedby}
+          <Button
+            label="Delete"
+            icon="pi pi-times"
+            className="p-button-primary"
+            style={{ marginRight: ".25em" }}
+            type="submit"
+            onClick={this.handleDelete}
+          />
         </div>
       </Card>
     ));
