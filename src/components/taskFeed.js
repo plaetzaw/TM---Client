@@ -12,7 +12,7 @@ import "primeflex/primeflex.css";
 export class taskFeed extends Component {
   componentDidMount() {
     this.props.getAllTasks();
-    this.props.getAllUsers();
+    // this.props.getAllUsers();
   }
 
   render() {
@@ -33,7 +33,7 @@ export class taskFeed extends Component {
 
 taskFeed.propTypes = {
   getAllTasks: PropTypes.func.isRequired,
-  getAllUsers: PropTypes.func.isRequired,
+  // getAllUsers: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
 };
 
@@ -43,6 +43,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   getAllTasks,
-  getAllUsers,
+  // getAllUsers,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(taskFeed);
