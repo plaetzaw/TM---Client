@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { deleteTask } from "../redux/actions/actions";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
+import { editModal } from "./editModal";
 
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/nova-light/theme.css";
@@ -11,10 +12,24 @@ import "primereact/resources/primereact.css";
 import "primeflex/primeflex.css";
 
 class taskCard extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isOpen: false,
+    };
+  }
+
   handleDelete = (e) => {
     e.preventDefault();
     const { id } = this.props.data;
     this.props.deleteTask({ id: id });
+  };
+
+  handleOpen = (e) => {
+    e.preventDefault();
+    this.setState = {
+      isOpen: true,
+    };
   };
 
   render() {
@@ -32,7 +47,8 @@ class taskCard extends Component {
       updatedat,
     } = this.props.data;
 
-    console.log(id);
+    // let modalMarkup = this.state.isOpen ? <></> : { editModal };
+
     return (
       <div>
         <Card
@@ -66,8 +82,17 @@ class taskCard extends Component {
               type="submit"
               onClick={this.handleDelete}
             />
+            <Button
+              label="Edit"
+              iocn="pi pi-equal"
+              className="p-button-secondary"
+              style={{ marginRight: ".25em" }}
+              type="submit"
+              onClick={this.handleDelete}
+            />
           </div>
         </Card>
+        {/* {modalMarkup} */}
       </div>
     );
   }
