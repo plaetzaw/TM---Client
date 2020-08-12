@@ -18,7 +18,6 @@ class taskCard extends Component {
   };
 
   render() {
-    // const { tasks } = this.props;
     console.log("NOT THE BEES PLS");
     console.log(this.props);
 
