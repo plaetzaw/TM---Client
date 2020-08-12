@@ -101,6 +101,7 @@ export const newTask = (newTask) => (dispatch) => {
 //Delete Task
 export const deleteTask = (data) => (dispatch) => {
   console.log("Deleting task");
+  console.log(data);
   axios
     .post("http://localhost:8080/deleteTask", data)
     .then(() => {

@@ -10,83 +10,84 @@ import "primereact/resources/themes/nova-light/theme.css";
 import "primereact/resources/primereact.css";
 import "primeflex/primeflex.css";
 
-export class taskCard extends Component {
+class taskCard extends Component {
   handleDelete = (e) => {
     e.preventDefault();
-    let ibObj = {
-      id: this.props.data.tasks.id,
-    };
-    console.log(this.props.data);
-    console.log(ibObj);
-    this.props.deleteTask(ibObj);
+    const { id } = this.props.data;
+    this.props.deleteTask({ id: id });
   };
 
   render() {
-    const { tasks } = this.props.data;
+    // const { tasks } = this.props;
+    console.log("NOT THE BEES PLS");
+    console.log(this.props);
 
-    // let userMarkup = tasks.map((users) => (
-    //   <div>
-    //     {users.firstname}
-    //     <br />
-    //     {users.lastname}
-    //     <br />
-    //   </div>
-    // ));
+    const {
+      id,
+      assignedby,
+      assignedto,
+      createdAt,
+      taskcompleted,
+      taskdescription,
+      taskname,
+      updatedat,
+    } = this.props.data;
 
-    let cardMarkup = tasks.map((card) => (
-      <Card
-        key={card.id}
-        title={card.taskname}
-        subTitle={card.taskdescription}
-        style={{
-          width: "300px",
-          display: "flex",
-          backgroundColor: "lightblue",
-          border: "3px",
-          margin: "10px",
-          alignItems: "center",
-        }}
-        className="ui-card-shadow"
-      >
-        <div>
-          <div className="p-grid">
-            <div className="p-col-6">id# {card.id}</div>
-            <div className="p-col-6">key value {card.id.toString()}</div>
+    console.log(id);
+    return (
+      <div>
+        <Card
+          key={id}
+          title={taskname}
+          subTitle={taskdescription}
+          style={{
+            width: "300px",
+            display: "flex",
+            backgroundColor: "lightblue",
+            border: "3px",
+            margin: "10px",
+            alignItems: "center",
+          }}
+          className="ui-card-shadow"
+        >
+          <div>
+            <div className="p-grid">
+              <div className="p-col-6">id# {id}</div>
+            </div>
+            <div className="p-grid">
+              <div className="p-col-6">Task Assigned To {assignedto}</div>
+              <div className="p-col-6">Task Assigned By {assignedby}</div>
+            </div>
+            <br />
+            <Button
+              label="Delete"
+              icon="pi pi-times"
+              className="p-button-primary"
+              style={{ marginRight: ".25em" }}
+              type="submit"
+              onClick={this.handleDelete}
+            />
           </div>
-          <div className="p-grid">
-            <div className="p-col-6">Task Assigned To {card.assignedto}</div>
-            <div className="p-col-6">Task Assigned By {card.assignedby}</div>
-          </div>
-          <br />
-          <Button
-            label="Delete"
-            icon="pi pi-times"
-            className="p-button-primary"
-            style={{ marginRight: ".25em" }}
-            type="submit"
-            onClick={this.handleDelete}
-          />
-        </div>
-      </Card>
-    ));
-
-    return <div>{cardMarkup}</div>;
+        </Card>
+        ;
+      </div>
+    );
   }
 }
 
 taskCard.propTypes = {
   deleteTask: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired,
+  // data: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    data: state.data,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     data: state.data,
+//   };
+// };
 
 const mapDispatchToProps = {
   deleteTask,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(taskCard);
+export default connect(null, mapDispatchToProps)(taskCard);

@@ -19,9 +19,16 @@ export class taskFeed extends Component {
     const { data } = this.props;
     const taskInfo = data.tasks;
 
-    let taskMarkup = taskInfo.map((card) => (
-      <TaskCard key={card.id} data={card} />
-    ));
+    let taskMarkup = taskInfo.map((card) => {
+      console.log(card);
+      return <TaskCard key={card.id} data={card} />;
+    });
+
+    // let taskMarkup = taskInfo.map((card) => (
+    //   <TaskCard key={card.id} data={card} />
+    // ));
+
+    // is the map even working bruh
     return (
       <div className="p-grid">
         <div className="col-6"> {taskMarkup}</div>
