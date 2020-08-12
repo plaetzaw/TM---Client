@@ -68,7 +68,6 @@ class taskCard extends Component {
             />
           </div>
         </Card>
-        ;
       </div>
     );
   }
