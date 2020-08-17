@@ -15,48 +15,11 @@ import "primeflex/primeflex.css";
 export class UI extends Component {
   constructor(props) {
     super(props);
-
-    // this.items = [
-    //   {
-    //     label: "Tasks",
-    //     icon: "pi pi-fw pi-pencil",
-    //     items: [
-    //       {
-    //         label: "Post New Task",
-    //         icon: "pi pi-fw pi-plus",
-    //         command: (event) => {
-    //           window.location = "/createTask";
-    //         },
-    //       },
-    //       {
-    //         label: "View Current Tasks",
-    //         icon: "pi pi-fw pi-trash",
-    //         url: "/taskFeed",
-    //         //to be replaced with USER task feed
-    //       },
-    //       {
-    //         separator: true,
-    //       },
-    //     ],
-    //   },
-    //   {
-    //     label: "User Profile",
-    //     icon: "pi pi-fw pi-user",
-    //     url: "/",
-    //     //to be replaced with USER profile
-    //   },
-    //   {
-    //     label: "All Team Tasks",
-    //     icon: "pi pi-list",
-    //     url: "/taskFeed",
-    //   },
-    // ];
   }
 
   navigateToPage = (path) => {
     console.log(`going here: ${path}`);
     this.props.history.push(path);
-    // showInfoMessage(this, "Navigation", path);
   };
 
   onLogout = (e) => {
@@ -66,13 +29,6 @@ export class UI extends Component {
 
   render() {
     let items = [
-      // {
-      //   label: "Create Task",
-      //   icon: "pi pi-fw pi-pencil",
-      //   command: () => {
-      //     this.navigateToPage("/createTask");
-      //   },
-      // },
       {
         label: "Tasks",
         icon: "pi pi-fw pi-pencil",
@@ -113,6 +69,11 @@ export class UI extends Component {
         },
       },
     ];
+
+    //  useStyle = {
+    //MAKE NAVBAR STICKY
+    //   position: stic
+    //  }
 
     return (
       <div>
