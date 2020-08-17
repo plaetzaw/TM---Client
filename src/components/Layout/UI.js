@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { LogoutUser } from "../../redux/actions/actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/nova-light/theme.css";
@@ -15,7 +16,63 @@ export class UI extends Component {
   constructor(props) {
     super(props);
 
-    this.items = [
+    // this.items = [
+    //   {
+    //     label: "Tasks",
+    //     icon: "pi pi-fw pi-pencil",
+    //     items: [
+    //       {
+    //         label: "Post New Task",
+    //         icon: "pi pi-fw pi-plus",
+    //         command: (event) => {
+    //           window.location = "/createTask";
+    //         },
+    //       },
+    //       {
+    //         label: "View Current Tasks",
+    //         icon: "pi pi-fw pi-trash",
+    //         url: "/taskFeed",
+    //         //to be replaced with USER task feed
+    //       },
+    //       {
+    //         separator: true,
+    //       },
+    //     ],
+    //   },
+    //   {
+    //     label: "User Profile",
+    //     icon: "pi pi-fw pi-user",
+    //     url: "/",
+    //     //to be replaced with USER profile
+    //   },
+    //   {
+    //     label: "All Team Tasks",
+    //     icon: "pi pi-list",
+    //     url: "/taskFeed",
+    //   },
+    // ];
+  }
+
+  navigateToPage = (path) => {
+    console.log(`going here: ${path}`);
+    this.props.history.push(path);
+    // showInfoMessage(this, "Navigation", path);
+  };
+
+  onLogout = (e) => {
+    e.preventDefault();
+    this.props.LogoutUser();
+  };
+
+  render() {
+    let items = [
+      // {
+      //   label: "Create Task",
+      //   icon: "pi pi-fw pi-pencil",
+      //   command: () => {
+      //     this.navigateToPage("/createTask");
+      //   },
+      // },
       {
         label: "Tasks",
         icon: "pi pi-fw pi-pencil",
@@ -23,12 +80,16 @@ export class UI extends Component {
           {
             label: "Post New Task",
             icon: "pi pi-fw pi-plus",
-            url: "http://localhost:3000/createTask",
+            command: () => {
+              this.navigateToPage("/createTask");
+            },
           },
           {
             label: "View Current Tasks",
             icon: "pi pi-fw pi-trash",
-            url: "http://localhost:3000/taskFeed",
+            command: () => {
+              this.navigateToPage("/taskFeed");
+            },
             //to be replaced with USER task feed
           },
           {
@@ -39,34 +100,23 @@ export class UI extends Component {
       {
         label: "User Profile",
         icon: "pi pi-fw pi-user",
-        url: "http://localhost:3000/",
+        command: () => {
+          this.navigateToPage("/");
+        },
         //to be replaced with USER profile
       },
       {
         label: "All Team Tasks",
         icon: "pi pi-list",
-        url: "http://localhost:3000/taskFeed",
+        command: () => {
+          this.navigateToPage("/taskFeed");
+        },
       },
     ];
-  }
 
-  onLogout = (e) => {
-    e.preventDefault();
-    this.props.LogoutUser();
-  };
-
-  render() {
     return (
       <div>
-        <Menubar model={this.items}>
-          <Link to="/createTask">Create Task</Link>
-
-          <Link to="/taskFeed">Task Feed</Link>
-
-          <Link to="/register">Register</Link>
-
-          <Link to="/">Login</Link>
-
+        <Menubar model={items}>
           <Button
             label="Logout"
             icon="pi pi-power-off"
@@ -93,4 +143,4 @@ const mapDispatchToProps = {
   LogoutUser,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UI);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UI));

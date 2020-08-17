@@ -28,8 +28,8 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/register" component={Register} />
-        <Route exact path="/createtask" component={Create} />
-        <Route exact path="/taskfeed" component={Feed} />
+        <Route exact path="/createTask" component={Create} />
+        <Route exact path="/taskFeed" component={Feed} />
       </Switch>
     </BrowserRouter>
   </Provider>,
