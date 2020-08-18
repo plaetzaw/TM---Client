@@ -33,8 +33,8 @@ class taskCard extends Component {
   };
 
   render() {
-    console.log("NOT THE BEES PLS");
-    console.log(this.props);
+    // console.log("NOT THE BEES PLS");
+    // console.log(this.props);
 
     const {
       id,
