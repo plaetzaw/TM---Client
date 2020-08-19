@@ -18,9 +18,9 @@ export class taskFeed extends Component {
   render() {
     const { data } = this.props;
     const taskInfo = data.tasks;
-    console.log(data);
-    console.log(this);
-    console.log(this.props.data);
+    const userInfo = this.props.users;
+    console.log(userInfo);
+    console.log(userInfo.credentials.id);
 
     let taskMarkup = taskInfo.map((card) => {
       // console.log(card);
@@ -44,10 +44,12 @@ taskFeed.propTypes = {
   getAllTasks: PropTypes.func.isRequired,
   // getAllUsers: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
+  users: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   data: state.data,
+  users: state.users,
 });
 
 const mapDispatchToProps = {

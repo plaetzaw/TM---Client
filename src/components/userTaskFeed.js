@@ -17,7 +17,9 @@ export class userTaskFeed extends Component {
   render() {
     const { data } = this.props;
     const taskInfo = data.tasks;
-    console.log(users.credentials);
+    const userInfo = this.props.users;
+    console.log(userInfo);
+    console.log(userInfo.credentials.id);
 
     let taskMarkup = taskInfo.map((card) => {
       console.log(card);

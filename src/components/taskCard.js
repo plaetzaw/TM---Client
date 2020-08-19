@@ -16,6 +16,11 @@ class taskCard extends Component {
     super();
     this.state = {
       isOpen: false,
+      taskname: null,
+      taskdescription: null,
+      taskcompleted: null,
+      assignedby: null,
+      assignedto: null,
     };
   }
 
