@@ -68,6 +68,20 @@ export class UI extends Component {
           this.navigateToPage("/taskFeed");
         },
       },
+      {
+        label: "Login",
+        icon: "pi pi-sign-in",
+        command: () => {
+          this.navigateToPage("/");
+        },
+      },
+      {
+        label: "Register",
+        icon: "pi pi-key",
+        command: () => {
+          this.navigateToPage("/register");
+        },
+      },
     ];
 
     //  useStyle = {

@@ -22,16 +22,20 @@ import { Provider } from "react-redux";
 // ===Store===
 import store from "./redux/store";
 
+///===Authentication===
+import AuthRoute from "./utility/AuthRoute";
+import Protected from "./utility/ProtectedRoute";
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <UI />
       <Switch>
-        <Route exact path="/" component={Login} />
+        <AuthRoute exact path="/" component={Login} />
         <Route exact path="/register" component={Register} />
-        <Route exact path="/createTask" component={Create} />
-        <Route exact path="/taskFeed" component={Feed} />
-        <Route exact path="/userTaskFeed" component={UserFeed} />
+        <Protected exact path="/createTask" component={Create} />
+        <Protected exact path="/taskFeed" component={Feed} />
+        <Protected exact path="/userTaskFeed" component={UserFeed} />
       </Switch>
     </BrowserRouter>
   </Provider>,

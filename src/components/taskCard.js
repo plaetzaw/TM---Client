@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { deleteTask } from "../redux/actions/actions";
+import { deleteTask, getAllUsers } from "../redux/actions/actions";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 import { editModal } from "./editModal";
@@ -30,12 +30,10 @@ class taskCard extends Component {
     this.setState = {
       isOpen: true,
     };
+    console.log(this.state.isOpen);
   };
 
   render() {
-    // console.log("NOT THE BEES PLS");
-    // console.log(this.props);
-
     const {
       id,
       assignedby,
@@ -73,6 +71,9 @@ class taskCard extends Component {
               <div className="p-col-6">Task Assigned To {assignedto}</div>
               <div className="p-col-6">Task Assigned By {assignedby}</div>
             </div>
+            <div className="p-col-6">
+              Task Completion Status {taskcompleted}
+            </div>
             <br />
             <Button
               label="Delete"
@@ -90,9 +91,9 @@ class taskCard extends Component {
               type="submit"
               onClick={this.handleOpen}
             />
+            {/* {modalMarkup} */}
           </div>
         </Card>
-        {/* {modalMarkup} */}
       </div>
     );
   }
@@ -111,6 +112,7 @@ taskCard.propTypes = {
 
 const mapDispatchToProps = {
   deleteTask,
+  // getAllUsers,
 };
 
 export default connect(null, mapDispatchToProps)(taskCard);
