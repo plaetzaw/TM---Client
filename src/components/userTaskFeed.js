@@ -11,11 +11,14 @@ import "primeflex/primeflex.css";
 
 export class userTaskFeed extends Component {
   componentDidMount() {
-    const assignedto = this.props.users.credentials.id;
+    const assignedto = {
+      assignedto: this.props.users.credentials.id,
+    };
     // console.log(assignedto);
     // parseInt(assignedto);
+    console.log(typeof assignedto);
     console.log(assignedto);
-    this.props.getUserTasks({ assignedto: assignedto });
+    this.props.getUserTasks(assignedto);
   }
 
   render() {

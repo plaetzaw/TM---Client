@@ -54,10 +54,11 @@ export const RegisterUser = (newUserData) => (dispatch) => {
 //Get User Tasks
 export const getUserTasks = (userID) => (dispatch) => {
   console.log("Retriving single user tasks");
+  console.log(typeof userID);
   console.log(userID);
   dispatch({ type: LOADING_DATA });
   axios
-    .get("http://localhost:8080/userTaskFeed", userID)
+    .post("http://localhost:8080/userTaskFeed", userID)
     .then((userTasks) => {
       console.log("found user tasks!");
       console.log(userTasks);
