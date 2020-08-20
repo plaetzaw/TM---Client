@@ -16,12 +16,11 @@ class taskCard extends Component {
     super();
     this.state = {
       isOpen: false,
-      taskname: null,
-      taskdescription: null,
-      taskcompleted: null,
-      assignedby: null,
-      assignedto: null,
     };
+  }
+
+  componentDidMount() {
+    this.props.getAllUsers();
   }
 
   handleDelete = (e) => {
@@ -93,7 +92,7 @@ class taskCard extends Component {
               className="p-button-secondary"
               style={{ marginRight: ".25em" }}
               type="submit"
-              onClick={this.handleDelete}
+              onClick={this.handleOpen}
             />
           </div>
         </Card>

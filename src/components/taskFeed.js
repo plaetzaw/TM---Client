@@ -12,7 +12,6 @@ import "primeflex/primeflex.css";
 export class taskFeed extends Component {
   componentDidMount() {
     this.props.getAllTasks();
-    // this.props.getAllUsers();
   }
 
   render() {
