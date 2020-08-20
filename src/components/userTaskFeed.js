@@ -14,9 +14,6 @@ export class userTaskFeed extends Component {
     const assignedto = {
       assignedto: this.props.users.credentials.id,
     };
-    // console.log(assignedto);
-    // parseInt(assignedto);
-    console.log(typeof assignedto);
     console.log(assignedto);
     this.props.getUserTasks(assignedto);
   }
