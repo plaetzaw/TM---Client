@@ -44,7 +44,7 @@ export class UI extends Component {
             label: "View Current Tasks",
             icon: "pi pi-fw pi-trash",
             command: () => {
-              this.navigateToPage("/taskFeed");
+              this.navigateToPage("/userTaskFeed");
             },
             //to be replaced with USER task feed
           },

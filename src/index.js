@@ -7,6 +7,7 @@ import Login from "./components/login";
 import Register from "./components/registration";
 import Create from "./components/createTask";
 import Feed from "./components/taskFeed";
+import UserFeed from "./components/userTaskFeed";
 
 //===Layout===
 import UI from "./components/Layout/UI";
@@ -30,6 +31,7 @@ ReactDOM.render(
         <Route exact path="/register" component={Register} />
         <Route exact path="/createTask" component={Create} />
         <Route exact path="/taskFeed" component={Feed} />
+        <Route exact path="/userTaskFeed" component={UserFeed} />
       </Switch>
     </BrowserRouter>
   </Provider>,

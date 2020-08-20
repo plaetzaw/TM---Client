@@ -11,7 +11,11 @@ import "primeflex/primeflex.css";
 
 export class userTaskFeed extends Component {
   componentDidMount() {
-    this.props.getUserTasks();
+    const assignedto = this.props.users.credentials.id;
+    // console.log(assignedto);
+    // parseInt(assignedto);
+    console.log(assignedto);
+    this.props.getUserTasks({ assignedto: assignedto });
   }
 
   render() {
@@ -37,10 +41,12 @@ export class userTaskFeed extends Component {
 userTaskFeed.propTypes = {
   getUserTasks: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
+  users: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   data: state.data,
+  users: state.users,
 });
 
 const mapDispatchToProps = {
