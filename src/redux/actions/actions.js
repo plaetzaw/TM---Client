@@ -9,6 +9,7 @@ import {
   POST_TASK,
   GET_ALL_USERS,
   DELETE_TASK,
+  UPDATE_TASK,
 } from "./actionTypes";
 
 import axios from "axios";
@@ -108,6 +109,17 @@ export const deleteTask = (data) => (dispatch) => {
     .post("http://localhost:8080/deleteTask", data)
     .then(() => {
       dispatch({ type: DELETE_TASK });
+    })
+    .catch((err) => console.log(err));
+};
+
+//Update Task
+export const updateTask = (data) => (dispatch) => {
+  console.log("Updating task");
+  axios
+    .post("http://localhost:8080/updateTask", data)
+    .then((updatedTask) => {
+      dispatch({ type: UPDATE_TASK, payload: updatedTask.data });
     })
     .catch((err) => console.log(err));
 };

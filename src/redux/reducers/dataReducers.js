@@ -3,7 +3,7 @@ import {
   GET_USER_TASKS,
   POST_TASK,
   DELETE_TASK,
-  // UPDATE_TASK,
+  UPDATE_TASK,
   GET_ALL_USERS,
 } from "../actions/actionTypes";
 
@@ -36,6 +36,11 @@ const dataReducers = (state = initialState, action) => {
     case DELETE_TASK:
       return {
         ...state,
+      };
+    case UPDATE_TASK:
+      return {
+        ...state,
+        uploads: action.payload,
       };
     case GET_ALL_USERS:
       return {

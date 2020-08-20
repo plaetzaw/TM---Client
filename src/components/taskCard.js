@@ -19,10 +19,6 @@ class taskCard extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.getAllUsers();
-  }
-
   handleDelete = (e) => {
     e.preventDefault();
     const { id } = this.props.data;
@@ -51,7 +47,7 @@ class taskCard extends Component {
       updatedat,
     } = this.props.data;
 
-    // let modalMarkup = this.state.isOpen ? <></> : { editModal };
+    let modalMarkup = this.state.isOpen ? <></> : { editModal };
 
     return (
       <div>
