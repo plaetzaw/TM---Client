@@ -4,7 +4,6 @@ import { Button } from "primereact/button";
 import PropTypes from "prop-types";
 import { LogoutUser } from "../../redux/actions/actions";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 
 import "primeicons/primeicons.css";
@@ -13,9 +12,9 @@ import "primereact/resources/primereact.css";
 import "primeflex/primeflex.css";
 
 export class UI extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   navigateToPage = (path) => {
     console.log(`going here: ${path}`);

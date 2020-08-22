@@ -8,6 +8,7 @@ import Register from "./components/registration";
 import Create from "./components/createTask";
 import Feed from "./components/taskFeed";
 import UserFeed from "./components/userTaskFeed";
+import ExampleTaskFeedThing from "./components/ExampleTaskFeedThing";
 
 //===Layout===
 import UI from "./components/Layout/UI";
@@ -36,6 +37,11 @@ ReactDOM.render(
         <Protected exact path="/createTask" component={Create} />
         <Protected exact path="/taskFeed" component={Feed} />
         <Protected exact path="/userTaskFeed" component={UserFeed} />
+        {/* <Protected
+          exact
+          path="/userTaskFeed"
+          component={ExampleTaskFeedThing}
+        /> */}
       </Switch>
     </BrowserRouter>
   </Provider>,

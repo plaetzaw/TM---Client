@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { deleteTask, getAllUsers } from "../redux/actions/actions";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
-import { editModal } from "./editModal";
+import { Editmodal } from "./editModal";
 
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/nova-light/theme.css";
@@ -26,11 +26,9 @@ class taskCard extends Component {
   };
 
   handleOpen = (e) => {
-    e.preventDefault();
-    this.setState = {
-      isOpen: true,
-    };
-    console.log(this.state.isOpen);
+    this.setState((state) => ({
+      isOpen: !state.isOpen,
+    }));
   };
 
   render() {
@@ -45,7 +43,7 @@ class taskCard extends Component {
       updatedat,
     } = this.props.data;
 
-    let modalMarkup = this.state.isOpen ? <></> : { editModal };
+    let modalMarkup = this.state.isOpen === false ? <></> : <Editmodal />;
 
     return (
       <div>
@@ -91,7 +89,7 @@ class taskCard extends Component {
               type="submit"
               onClick={this.handleOpen}
             />
-            {/* {modalMarkup} */}
+            {modalMarkup}
           </div>
         </Card>
       </div>

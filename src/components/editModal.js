@@ -10,15 +10,15 @@ import "primereact/resources/themes/nova-light/theme.css";
 import "primereact/resources/primereact.css";
 import "primeflex/primeflex.css";
 
-export class editModal extends Component {
+export class Editmodal extends Component {
   constructor() {
     super();
     this.state = {
-      taskname: this.state.taskname,
-      taskdescription: this.state.taskdescription,
-      taskcompleted: this.state.taskcompleted,
-      assignedby: this.state.assignedby,
-      assignedto: this.state.assignedto,
+      taskname: "",
+      taskdescription: "",
+      taskcompleted: false,
+      assignedby: "",
+      assignedto: "",
     };
   }
 
@@ -26,6 +26,7 @@ export class editModal extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
+    console.log(e.target.value);
   };
 
   onSubmit = (e) => {
@@ -37,10 +38,15 @@ export class editModal extends Component {
       assignedto: parseInt(this.state.assignedto),
       assignedby: parseInt(this.state.assignedby),
     };
+    console.log(updatedTask);
     this.props.updateTask(updatedTask);
   };
 
   render() {
+    console.log(this);
+    console.log(this.props);
+    console.log(this.state);
+
     return (
       <div className="p-field">
         <InputText
@@ -81,7 +87,7 @@ export class editModal extends Component {
   }
 }
 
-editModal.propTypes = {
+Editmodal.propTypes = {
   updateTask: PropTypes.func.isRequired,
 };
 
@@ -96,4 +102,4 @@ const mapDispatchToProps = {
   // getAllUsers
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(editModal);
+export default connect(mapStateToProps, mapDispatchToProps)(Editmodal);
