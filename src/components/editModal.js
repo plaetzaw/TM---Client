@@ -14,6 +14,7 @@ export class Editmodal extends Component {
   constructor() {
     super();
     this.state = {
+      id: "",
       taskname: "",
       taskdescription: "",
       taskcompleted: false,
@@ -32,6 +33,7 @@ export class Editmodal extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     let updatedTask = {
+      id: this.state.id,
       taskname: this.state.taskname,
       taskdescription: this.state.taskdescription,
       taskcompleted: false,
@@ -39,7 +41,7 @@ export class Editmodal extends Component {
       assignedby: parseInt(this.state.assignedby),
     };
     console.log(updatedTask);
-    this.props.updateTask(updatedTask);
+    updateTask(updatedTask);
   };
 
   render() {

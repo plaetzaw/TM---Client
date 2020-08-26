@@ -3,7 +3,6 @@ import { getUserTasks, getAllUsers } from "../redux/actions/actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import TaskCard from "./taskCard";
-import TaskCardThing from "./TaskCardThing";
 
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/nova-light/theme.css";

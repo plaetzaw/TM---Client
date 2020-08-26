@@ -43,6 +43,13 @@ class taskCard extends Component {
       updatedat,
     } = this.props.data;
 
+    // let modalInfo = this.props.map((card) => {
+    //   console.log(card);
+    //   return <Editmodal key={card.id} data={card} />;
+    // });
+
+    // let modalMarkup = this.state.isOpen === false ? <></> : { modalInfo };
+
     let modalMarkup = this.state.isOpen === false ? <></> : <Editmodal />;
 
     return (

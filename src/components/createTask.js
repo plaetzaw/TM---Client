@@ -42,21 +42,14 @@ export class createTask extends Component {
       taskcompleted: false,
       assignedto: parseInt(this.state.assignedto),
       assignedby: parseInt(this.state.assignedby),
+      // assignedby: parseInt(this.props.users.credentials.id),
     };
     this.props.newTask(newTask);
     console.log("New task posted");
   };
 
   render() {
-    const { users } = this.props.data;
-
-    let usersMarkup = users.map((users) => (
-      <div>
-        F : {users.firstname}
-        <br />L : {users.lastname}
-      </div>
-    ));
-
+    console.log(this.props.users.credentials.id);
     return (
       <div className="p-field">
         <InputText
@@ -64,7 +57,6 @@ export class createTask extends Component {
           placeholder="Task Title"
           onChange={(e) => this.handleChange(e)}
         />
-        {this.state.taskname}
         <br />
         <InputText
           name="taskdescription"
@@ -72,38 +64,23 @@ export class createTask extends Component {
           onChange={(e) => this.handleChange(e)}
         />
         <br />
-        {this.state.taskdescription}
         <InputText
           name="assignedto"
           placeholder="Assigned To"
           onChange={(e) => this.handleChange(e)}
         />
-        {this.state.assignedto}
         <br />
         <InputText
           name="assignedby"
           placeholder="Assigned By"
           onChange={(e) => this.handleChange(e)}
         />
-        {this.state.assignedby}
         <br />
         <Button
           label="Submit!"
           className="p-button-raised p-button-rounded"
           onClick={this.onSubmit}
         />
-        {usersMarkup}
-
-        {/* <Dropdown
-          key={users.id}
-          name={users.email}
-          options={users.map((user) => {
-            {
-              user.firstname;
-            }
-          })}
-          onChange={(e) => this.handleChange(e)}
-        /> */}
       </div>
     );
   }
@@ -113,11 +90,13 @@ createTask.propTypes = {
   newTask: PropTypes.func.isRequired,
   getAllUsers: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
+  users: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => {
   return {
     data: state.data,
+    users: state.users,
   };
 };
 
